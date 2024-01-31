@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Card from './components/Card/Card'
+import { useEffect } from 'react'
 
 function App() {
   //Carregamneto de dados direto via código
@@ -52,8 +53,12 @@ function App() {
     setItens(results)
   }
 
-  // Chamnado a função que carrega dados da API
+  // Protegemos o carregamento de dados da API para chamar
+  // Apenas uma única vez
+  useEffect(function () {
+    // Chamnado a função que carrega dados da API
   carregarDadosApi()
+  }, [])
   
   return (
     <>
